@@ -54,7 +54,7 @@ pipeline {
                     sh 'gcloud config set project $PROJECT_ID'
 
                     // Deploy the application to App Engine
-                    sh 'gcloud app deploy --bucket=gs://rock-position-455809-m2-deployments --quiet'
+                    sh 'gcloud app deploy --quiet'
                 }
             }
         }
