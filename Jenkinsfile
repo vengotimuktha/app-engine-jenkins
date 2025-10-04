@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_ID = 'rock-position-455809-m2'
+        PROJECT_ID = 'devops-practice-474016'
         GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-service-account')  // Service account credential
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/AneilRapole/app-engine-Jenkins.git'
+                git branch: 'main', url: 'https://github.com/vengotimuktha/app-engine-jenkins.git'
             }
         }
 
@@ -54,7 +54,7 @@ pipeline {
                     sh 'gcloud config set project $PROJECT_ID'
 
                     // Deploy the application to App Engine
-                    sh 'gcloud app deploy --quiet'
+                    sh 'gcloud app deploy --bucket=gs://devops-practice-474016-deployments --quiet'
                 }
             }
         }
